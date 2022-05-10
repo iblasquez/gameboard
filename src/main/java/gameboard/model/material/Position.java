@@ -1,8 +1,7 @@
 package gameboard.model.material;
 
-import lombok.EqualsAndHashCode;
+import java.util.Objects;
 
-@EqualsAndHashCode
 public final class Position {
 
 	private final Integer column;
@@ -24,6 +23,24 @@ public final class Position {
 	@Override
 	public String toString() {
 		return row.toString() + "," + column.toString();
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(column, row);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Position other = (Position) obj;
+		return Objects.equals(column, other.column) && Objects.equals(row, other.row);
 	}
 
 }
